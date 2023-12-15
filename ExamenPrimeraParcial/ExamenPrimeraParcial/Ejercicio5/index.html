@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .contador {
+      margin-top: 50px;
+    }
+
+    .valor {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Contador</title>
+</head>
+<body>
+  <div class="contador">
+    <h2>Contador</h2>
+    <div class="valor" id="contador">0</div>
+    <button id="incrementar">Incrementar</button>
+    <button id="disminuir">Disminuir</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const contadorElement = document.getElementById('contador');
+      const incrementarButton = document.getElementById('incrementar');
+      const disminuirButton = document.getElementById('disminuir');
+
+      let contador = 0;
+
+      function actualizarContador() {
+        contadorElement.textContent = contador;
+      }
+
+      function incrementarContador() {
+        contador++;
+        actualizarContador();
+      }
+
+      function disminuirContador() {
+        if (contador > 0) {
+          contador--;
+          actualizarContador();
+        }
+      }
+
+      incrementarButton.addEventListener('click', incrementarContador);
+      disminuirButton.addEventListener('click', disminuirContador);
+
+      actualizarContador();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .user-list {
+      margin-top: 20px;
+    }
+
+    .user-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+  <title>Lista de Usuarios</title>
+</head>
+<body>
+  <h1>Lista de Usuarios</h1>
+  <div class="user-list" id="user-list">
+    <!-- Usuarios se agregarán aquí dinámicamente -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const userListElement = document.getElementById('user-list');
+
+      // URL de la API externa de prueba (JSONPlaceholder)
+      const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+      // Realizar una solicitud HTTP GET a la API
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Procesar los datos y construir la lista de usuarios
+          data.forEach(user => {
+            const userItem = document.createElement('div');
+            userItem.className = 'user-item';
+            userItem.textContent = `Nombre: ${user.name}, Email: ${user.email}`;
+            userListElement.appendChild(userItem);
+          });
+        })
+        .catch(error => {
+          console.error('Error al obtener la lista de usuarios:', error);
+        });
+    });
+  </script>
+</body>
+</html>

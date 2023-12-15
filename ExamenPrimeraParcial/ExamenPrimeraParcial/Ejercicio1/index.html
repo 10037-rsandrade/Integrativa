@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Saludo Component</title>
+</head>
+<body>
+    <div id="saludo-container"></div>
+
+    <script>
+        class SaludoComponent extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                const saludo = document.createElement('p');
+                saludo.textContent = '¡Hola, Mundo!';
+                this.shadowRoot.appendChild(saludo);
+            }
+        }
+
+        customElements.define('saludo-component', SaludoComponent);
+
+        const saludoContainer = document.getElementById('saludo-container');
+        const saludoComponent = document.createElement('saludo-component');
+        saludoContainer.appendChild(saludoComponent);
+    </script>
+</body>
+</html>
